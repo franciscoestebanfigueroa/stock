@@ -21,7 +21,7 @@ List<Categorias> lista = [
       categoria: 'Leches ',
       listadoproductos: [Productos(nombre: 'Chacra', costo: '130')]),
   Categorias(categoria: 'Quesos', listadoproductos: []),
-  Categorias(categoria: 'yogures', listadoproductos: []),
+  Categorias(categoria: 'Yogures', listadoproductos: []),
   Categorias(categoria: 'Masitas', listadoproductos: []),
   Categorias(categoria: 'Snack', listadoproductos: []),
 ];
