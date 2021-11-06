@@ -1,24 +1,37 @@
 import 'package:flutter/material.dart';
 
 import 'datos.dart';
+import 'model.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
+  late TabController tabController;
+  @override
+  void initState() {
+    tabController = TabController(vsync: this, length: lista.length);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     List<Widget> lw = lista
-        .map((e) => Card(
-            elevation: 20,
-            margin: EdgeInsets.symmetric(vertical: 4, horizontal: 3),
-            child: Center(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  '${e.categoria}',
-                ),
+        .map((e) => CardTag(
+              e: e,
+            ))
+        .toList();
+    List<Tab> ltab = lista
+        .map((e) => Tab(
+              child: Text(
+                '${e.categoria}',
+                style: TextStyle(color: Colors.black),
               ),
-            )))
+            ))
         .toList();
 
     return MaterialApp(
@@ -31,9 +44,13 @@ class MyApp extends StatelessWidget {
             body: Column(
               children: [
                 Container(
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: lw,
+                  child: TabBar(
+                    onTap: (index) {
+                      print(index);
+                    },
+                    isScrollable: true,
+                    tabs: ltab,
+                    controller: tabController,
                   ),
                   height: 50,
                 ),
@@ -71,5 +88,27 @@ class MyApp extends StatelessWidget {
             )),
       ),
     );
+  }
+}
+
+class CardTag extends StatelessWidget {
+  final Categorias e;
+  const CardTag({
+    required this.e,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+        elevation: 20,
+        margin: EdgeInsets.symmetric(vertical: 4, horizontal: 3),
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              '${e.categoria}',
+            ),
+          ),
+        ));
   }
 }
