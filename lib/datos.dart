@@ -20,8 +20,24 @@ List<Categorias> lista = [
   Categorias(
       categoria: 'Leches ',
       listadoproductos: [Productos(nombre: 'Chacra', costo: '130')]),
-  Categorias(categoria: 'Quesos', listadoproductos: []),
-  Categorias(categoria: 'Yogures', listadoproductos: []),
-  Categorias(categoria: 'Masitas', listadoproductos: []),
-  Categorias(categoria: 'Snack', listadoproductos: []),
+  Categorias(categoria: 'Quesos', listadoproductos: [
+    Productos(nombre: 'Cremoso', costo: '450'),
+    Productos(nombre: 'Barra', costo: '75'),
+    Productos(nombre: 'Sardo', costo: '1130')
+  ]),
+  Categorias(categoria: 'Yogures', listadoproductos: [
+    Productos(nombre: 'Yog 300g', costo: '95'),
+    Productos(nombre: 'ConCereales', costo: '80')
+  ]),
+  Categorias(categoria: 'Masitas', listadoproductos: [
+    Productos(nombre: 'Pepitos', costo: '118'),
+    Productos(nombre: 'Oreo', costo: '118'),
+    Productos(nombre: 'Frutigram', costo: '135')
+  ]),
+  Categorias(categoria: 'Snack', listadoproductos: [
+    Productos(nombre: 'Chizitos', costo: '50'),
+    Productos(nombre: 'Papas', costo: '86'),
+    Productos(nombre: 'Palitos Chedar', costo: '50'),
+    Productos(nombre: 'Tutucas', costo: '50')
+  ]),
 ];

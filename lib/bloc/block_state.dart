@@ -1,6 +1,14 @@
 part of 'block_bloc.dart';
 
 @immutable
-abstract class BlockState {}
+abstract class BlockState {
+  final nombre;
 
-class BlockInitial extends BlockState {}
+  BlockState(this.nombre);
+}
+
+class BlockInitial extends BlockState {
+  final String nombre;
+
+  BlockInitial(this.nombre) : super(nombre);
+}

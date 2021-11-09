@@ -5,9 +5,9 @@ part 'block_event.dart';
 part 'block_state.dart';
 
 class BlockBloc extends Bloc<BlockEvent, BlockState> {
-  BlockBloc() : super(BlockInitial()) {
+  BlockBloc() : super(BlockInitial('hola mundo')) {
     on<BlockEvent>((event, emit) {
-      // TODO: implement event handler
+      BlockInitial('Pancho');
     });
   }
 }
