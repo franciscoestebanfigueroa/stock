@@ -2,13 +2,14 @@ part of 'block_bloc.dart';
 
 @immutable
 abstract class BlockState {
-  final nombre;
+  final double alturaproductos = 40;
+  final double alturacategorias = 150;
+  final double alturatab = 50;
+  final List<Categorias> datos;
 
-  BlockState(this.nombre);
+  BlockState(this.datos);
 }
 
 class BlockInitial extends BlockState {
-  final String nombre;
-
-  BlockInitial(this.nombre) : super(nombre);
+  BlockInitial() : super(lista);
 }

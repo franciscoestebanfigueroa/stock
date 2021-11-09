@@ -19,7 +19,13 @@ class Productos {
 
 class Categorias {
   final categoria;
+  final cantidadcategotia;
+  final cantidadproductos;
   final List<Productos> listadoproductos;
 
-  Categorias({required this.categoria, required this.listadoproductos});
+  Categorias(
+      {this.cantidadcategotia,
+      this.cantidadproductos,
+      required this.categoria,
+      required this.listadoproductos});
 }
