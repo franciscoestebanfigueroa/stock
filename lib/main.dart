@@ -32,7 +32,6 @@ class MyApp extends StatelessWidget {
             ),
             body: BlocBuilder<BlockBloc, BlockState>(
               builder: (context, state) {
-                print(state.datos[0].categoria);
                 return Column(
                   children: [
                     WTabs(state: state),
