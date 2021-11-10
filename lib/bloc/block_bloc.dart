@@ -9,7 +9,9 @@ part 'block_state.dart';
 class BlockBloc extends Bloc<BlockEvent, BlockState> {
   BlockBloc() : super(BlockInitial()) {
     on<BlockEvent>((event, emit) {
-      BlockInitial();
+      if (event is ETabs) {
+        return BlockInitial();
+      }
     });
   }
 }

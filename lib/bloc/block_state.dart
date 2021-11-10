@@ -6,10 +6,20 @@ abstract class BlockState {
   final double alturacategorias = 50;
   final double alturatab = 50;
   final List<Categorias> datos;
+  final int cantidadcategorias;
+  final List<int> cantidadproductos;
 
-  BlockState(this.datos);
+  BlockState(this.datos, this.cantidadcategorias, this.cantidadproductos);
 }
 
 class BlockInitial extends BlockState {
-  BlockInitial() : super(lista);
+  BlockInitial() : super(lista, lista.length, []);
+}
+
+class BlocDatos extends BlockState {
+  final cantidadcategorias;
+  final cantidadproductos;
+
+  BlocDatos(this.cantidadcategorias, this.cantidadproductos)
+      : super(lista, cantidadcategorias, cantidadproductos);
 }

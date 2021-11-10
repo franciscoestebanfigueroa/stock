@@ -40,6 +40,8 @@ class MyApp extends StatelessWidget {
                       child: ListView.builder(
                           itemCount: lista.length,
                           itemBuilder: (context, index) {
+                            print(
+                                'cantidad de productos en ${state.datos[index].categoria} ${state.datos[index].listadoproductos.length}');
                             return WProductos(
                               index: index,
                               state: state,
