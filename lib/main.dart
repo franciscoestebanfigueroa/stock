@@ -5,7 +5,6 @@ import 'package:stock/Widget/wtabs.dart';
 import 'package:stock/bloc/block_bloc.dart';
 
 import 'bloc/block_bloc.dart';
-import 'datos.dart';
 
 void main() => runApp(MyAppBloc());
 
@@ -21,7 +20,25 @@ class MyAppBloc extends StatelessWidget {
   }
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  ScrollController scrollController =
+      ScrollController(initialScrollOffset: 100.0, keepScrollOffset: false);
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    widget.scrollController.addListener(() {
+      setState(() {
+        print('escucho ${widget.scrollController.offset}');
+      });
+    });
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -39,11 +56,23 @@ class MyApp extends StatelessWidget {
                     Expanded(
                         child: Container(
                       child: ListView.builder(
-                          itemCount: lista.length,
+                          controller: widget.scrollController,
+                          itemCount: state.datos.length,
                           itemBuilder: (context, index) {
-                            return WProductos(
-                              index: index,
-                              state: state,
+                            return GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  print(
+                                      'on tap ${widget.scrollController.offset} ');
+                                  widget.scrollController = ScrollController(
+                                      initialScrollOffset: 300,
+                                      keepScrollOffset: false);
+                                });
+                              },
+                              child: WProductos(
+                                index: index,
+                                state: state,
+                              ),
                             );
                           }),
                     ))
