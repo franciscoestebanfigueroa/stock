@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stock/Widget/wcardproductos.dart';
 import 'package:stock/Widget/wtabs.dart';
+import 'package:stock/bloc/block_bloc.dart';
 
 import 'bloc/block_bloc.dart';
 import 'datos.dart';
@@ -40,8 +41,6 @@ class MyApp extends StatelessWidget {
                       child: ListView.builder(
                           itemCount: lista.length,
                           itemBuilder: (context, index) {
-                            print(
-                                'cantidad de productos en ${state.datos[index].categoria} ${state.datos[index].listadoproductos.length}');
                             return WProductos(
                               index: index,
                               state: state,

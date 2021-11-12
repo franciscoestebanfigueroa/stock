@@ -19,13 +19,9 @@ class Productos {
 
 class Categorias {
   final categoria;
-  final cantidadcategotia;
-  final cantidadproductos;
+
+  int cantidadproductos = 0;
   final List<Productos> listadoproductos;
 
-  Categorias(
-      {this.cantidadcategotia,
-      this.cantidadproductos,
-      required this.categoria,
-      required this.listadoproductos});
+  Categorias({required this.categoria, required this.listadoproductos});
 }

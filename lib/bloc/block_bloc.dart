@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:stock/datos.dart';
@@ -10,7 +12,13 @@ class BlockBloc extends Bloc<BlockEvent, BlockState> {
   BlockBloc() : super(BlockInitial()) {
     on<BlockEvent>((event, emit) {
       if (event is ETabs) {
-        return BlockInitial();
+        state.datos[event.index].cantidadproductos = event.cproductos;
+        for (var item in state.datos) {
+          print(item.cantidadproductos);
+        }
+        emit(BlockInitial());
+      } else {
+        emit(BlockInitial());
       }
     });
   }

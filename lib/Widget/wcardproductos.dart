@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stock/bloc/block_bloc.dart';
 
-class WProductos extends StatelessWidget {
+class WProductos extends StatefulWidget {
   final index;
   final BlockState state;
   const WProductos({
@@ -9,6 +10,21 @@ class WProductos extends StatelessWidget {
     this.index,
     required this.state,
   }) : super(key: key);
+
+  @override
+  _WProductosState createState() => _WProductosState();
+}
+
+class _WProductosState extends State<WProductos> {
+  @override
+  void initState() {
+    final cp = widget.state.datos[widget.index].listadoproductos.length;
+
+    BlocProvider.of<BlockBloc>(context).add(ETabs(cp, widget.index));
+    print(
+        'cantidad de productos de ${widget.state.datos[widget.index].categoria} ${widget.state.datos[widget.index].listadoproductos.length}');
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,20 +38,20 @@ class WProductos extends StatelessWidget {
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             child: Container(
               alignment: Alignment.center,
-              height: state.alturacategorias,
+              height: widget.state.alturacategorias,
               child: Text(
-                '${state.datos[index].categoria}',
+                '${widget.state.datos[widget.index].categoria}',
                 style: TextStyle(color: Colors.red, fontSize: 25),
               ),
             ),
           ),
         ),
         Column(
-          children:
-              List.generate(state.datos[index].listadoproductos.length, (x) {
+          children: List.generate(
+              widget.state.datos[widget.index].listadoproductos.length, (x) {
             return Container(
               padding: EdgeInsets.symmetric(horizontal: 10),
-              height: state.alturaproductos,
+              height: widget.state.alturaproductos,
               width: double.infinity,
               child: Card(
                 shape: RoundedRectangleBorder(
@@ -53,7 +69,8 @@ class WProductos extends StatelessWidget {
                         maxRadius: 15,
                       ),
                       Spacer(),
-                      Text('${state.datos[index].listadoproductos[x].nombre}',
+                      Text(
+                          '${widget.state.datos[widget.index].listadoproductos[x].nombre}',
                           style: TextStyle(fontSize: 20)),
                     ],
                   ),

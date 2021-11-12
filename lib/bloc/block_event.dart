@@ -3,8 +3,9 @@ part of 'block_bloc.dart';
 @immutable
 abstract class BlockEvent {}
 
-class ETabs {
+class ETabs extends BlockEvent {
+  final int cproductos;
   final int index;
 
-  ETabs(this.index);
+  ETabs(this.cproductos, this.index);
 }
