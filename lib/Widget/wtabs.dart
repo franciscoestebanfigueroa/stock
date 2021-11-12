@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:stock/bloc/block_bloc.dart';
 
 class WTabs extends StatefulWidget {
+  ScrollController scrollController;
+
   WTabs({
     required this.state,
+    required this.scrollController,
   });
 
   final BlockState state;
@@ -36,7 +39,13 @@ class _WTabsState extends State<WTabs> with SingleTickerProviderStateMixin {
       color: Colors.amber,
       child: TabBar(
         onTap: (index) {
-          print(index);
+          setState(() {
+            widget.scrollController.animateTo(
+                (widget.state.datos[index].cantidadproductos + 2) * 50,
+                duration: Duration(milliseconds: 600),
+                curve: Curves.bounceOut);
+            print(widget.state.datos[index].cantidadproductos + 2);
+          });
         },
         isScrollable: true,
         tabs: ltabs,
