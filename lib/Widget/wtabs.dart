@@ -40,10 +40,13 @@ class _WTabsState extends State<WTabs> with SingleTickerProviderStateMixin {
       child: TabBar(
         onTap: (index) {
           setState(() {
-            widget.scrollController.animateTo(
-                (widget.state.datos[index].cantidadproductos + 2) * 50,
-                duration: Duration(milliseconds: 600),
-                curve: Curves.bounceOut);
+            int x = 0;
+            for (int i = 0; i < index; i++) {
+              x += widget.state.datos[i].cantidadproductos;
+            }
+            widget.scrollController.animateTo(((x + index) * 50),
+                duration: Duration(milliseconds: 500),
+                curve: Curves.decelerate);
             print(widget.state.datos[index].cantidadproductos + 2);
           });
         },
