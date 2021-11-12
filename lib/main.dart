@@ -21,21 +21,16 @@ class MyAppBloc extends StatelessWidget {
 }
 
 class MyApp extends StatefulWidget {
-  ScrollController scrollController =
-      ScrollController(initialScrollOffset: 100.0, keepScrollOffset: false);
   @override
   _MyAppState createState() => _MyAppState();
 }
 
+ScrollController scrollController =
+    ScrollController(initialScrollOffset: 0.0, keepScrollOffset: false);
+
 class _MyAppState extends State<MyApp> {
   @override
   void initState() {
-    widget.scrollController.addListener(() {
-      setState(() {
-        print('escucho ${widget.scrollController.offset}');
-      });
-    });
-
     super.initState();
   }
 
@@ -52,27 +47,16 @@ class _MyAppState extends State<MyApp> {
               builder: (context, state) {
                 return Column(
                   children: [
-                    WTabs(state: state),
+                    WTabs(state: state, scrollController: scrollController),
                     Expanded(
                         child: Container(
                       child: ListView.builder(
-                          controller: widget.scrollController,
+                          controller: scrollController,
                           itemCount: state.datos.length,
                           itemBuilder: (context, index) {
-                            return GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  print(
-                                      'on tap ${widget.scrollController.offset} ');
-                                  widget.scrollController = ScrollController(
-                                      initialScrollOffset: 300,
-                                      keepScrollOffset: false);
-                                });
-                              },
-                              child: WProductos(
-                                index: index,
-                                state: state,
-                              ),
+                            return WProductos(
+                              index: index,
+                              state: state,
                             );
                           }),
                     ))
