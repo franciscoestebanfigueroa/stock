@@ -19,10 +19,9 @@ class _WProductosState extends State<WProductos> {
   @override
   void initState() {
     final cp = widget.state.datos[widget.index].listadoproductos.length;
-
+//pasamos la cantidad de producto a un item en categoria
     BlocProvider.of<BlockBloc>(context).add(ETabs(cp, widget.index));
-    print(
-        'cantidad de productos de ${widget.state.datos[widget.index].categoria} ${widget.state.datos[widget.index].listadoproductos.length}');
+
     super.initState();
   }
 
