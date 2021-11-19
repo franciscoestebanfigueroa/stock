@@ -54,6 +54,20 @@ class _MyAppState extends State<MyApp> {
                           controller: scrollController,
                           itemCount: state.datos.length,
                           itemBuilder: (context, index) {
+                            final to;
+                            final from;
+                            final st = state.datos;
+                            if (index == 0) {
+                              from = 1;
+                              to = state.alturacategorias +
+                                  state.datos[index].cantidadproductos;
+                            } else {
+                              from = st[index - 1].to;
+                              to = 10;
+                            }
+
+                            BlocProvider.of<BlockBloc>(context)
+                                .add(EScroller(index: index, from: 10, to: 10));
                             return WProductos(
                               index: index,
                               state: state,

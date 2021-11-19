@@ -5,11 +5,12 @@ abstract class BlockState {
   final double alturaproductos = 40;
   final double alturacategorias = 50;
   final double alturatab = 50;
-  final List<Categorias> datos;
+  List<Categorias> datos;
 
   BlockState(this.datos);
 }
 
 class BlockInitial extends BlockState {
-  BlockInitial() : super(lista);
+  final lista;
+  BlockInitial(this.lista) : super(lista);
 }

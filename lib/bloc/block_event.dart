@@ -9,3 +9,10 @@ class ETabs extends BlockEvent {
 
   ETabs(this.cproductos, this.index);
 }
+
+class EScroller extends BlockEvent {
+  final to;
+  final from;
+  final index;
+  EScroller({this.index, this.to, this.from});
+}

@@ -19,9 +19,15 @@ class Productos {
 
 class Categorias {
   final categoria;
+  late final from;
+  late final to;
 
   int cantidadproductos = 0;
   final List<Productos> listadoproductos;
 
-  Categorias({required this.categoria, required this.listadoproductos});
+  Categorias(
+      {this.from = 0,
+      this.to = 0,
+      required this.categoria,
+      required this.listadoproductos});
 }
