@@ -19,8 +19,21 @@ class _WTabsState extends State<WTabs> with SingleTickerProviderStateMixin {
   late TabController tabController;
   @override
   void initState() {
+    int x = 0;
     tabController =
         TabController(length: widget.state.datos.length, vsync: this);
+    widget.scrollController.addListener(() {
+      for (int i = 0; i < widget.state.datos.length; i++) {
+        if (widget.scrollController.offset > widget.state.datos[i].from) {
+          x = i;
+        }
+
+        //break;
+      }
+      tabController.animateTo(x,
+          curve: Curves.decelerate, duration: Duration(milliseconds: 500));
+    });
+
     super.initState();
   }
 

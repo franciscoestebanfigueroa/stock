@@ -11,8 +11,8 @@ class ETabs extends BlockEvent {
 }
 
 class EScroller extends BlockEvent {
-  final to;
-  final from;
-  final index;
-  EScroller({this.index, this.to, this.from});
+  final double to;
+  final double from;
+  final int index;
+  EScroller({required this.index, required this.to, required this.from});
 }

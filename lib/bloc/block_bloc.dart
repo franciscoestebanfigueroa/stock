@@ -8,7 +8,10 @@ part 'block_event.dart';
 part 'block_state.dart';
 
 class BlockBloc extends Bloc<BlockEvent, BlockState> {
-  BlockBloc() : super(BlockInitial(lista)) {
+  BlockBloc()
+      : super(BlockInitial(
+          lista,
+        )) {
     on<BlockEvent>((event, emit) {
       if (event is ETabs) {
         state.datos[event.index].cantidadproductos = event.cproductos;
@@ -16,10 +19,11 @@ class BlockBloc extends Bloc<BlockEvent, BlockState> {
         emit(BlockInitial(state.datos));
       } else if (event is EScroller) {
         state.datos[event.index].from = event.from;
-        // state.datos[event.index].to = event.to;
+        state.datos[event.index].to = event.to;
         emit(BlockInitial(state.datos));
-        print(' From ${event.from}');
-        print(' TO ${event.to}');
+        // print(event.index);
+        // print(' From ${event.from}');
+        //print(' TO ${event.to}');
       } else {
         emit(BlockInitial(state.datos));
       }

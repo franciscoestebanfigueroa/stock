@@ -19,8 +19,8 @@ class Productos {
 
 class Categorias {
   final categoria;
-  late final from;
-  late final to;
+  double from;
+  double to;
 
   int cantidadproductos = 0;
   final List<Productos> listadoproductos;
